@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://tjee" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://tjee" xmlns:intf="http://tjee" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://tjee" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="filter">
+    <complexType>
+     <sequence>
+      <element name="inputBytes" type="xsd:base64Binary"/>
+      <element name="filter" type="xsd:string"/>
+      <element name="ext" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="filterResponse">
+    <complexType>
+     <sequence>
+      <element name="filterReturn" type="xsd:base64Binary"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="filterRequest">
+
+      <wsdl:part element="impl:filter" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="filterResponse">
+
+      <wsdl:part element="impl:filterResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ProcessImage">
+
+      <wsdl:operation name="filter">
+
+         <wsdl:input message="impl:filterRequest" name="filterRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:filterResponse" name="filterResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ProcessImageSoapBinding" type="impl:ProcessImage">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="filter">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="filterRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="filterResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ProcessImageService">
+
+      <wsdl:port binding="impl:ProcessImageSoapBinding" name="ProcessImage">
+
+         <wsdlsoap:address location="http://localhost:8080/Podbielski_Piotr_Projekt_srvr/services/ProcessImage"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
